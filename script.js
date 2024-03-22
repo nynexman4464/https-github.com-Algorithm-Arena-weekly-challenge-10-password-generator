@@ -47,3 +47,23 @@ function generate(event) {
   form.pw.value = pw;
   form.pw.select();
 }
+document.addEventListener("DOMContentLoaded", () => {
+  document.form.rule.addEventListener("change", () => {
+    const ruleSpot = document.getElementById("ruleSpot");
+    let stuff = document.createTextNode("");
+    switch (document.form.rule.value) {
+      case "character-set":
+        stuff = CharacterSetRule.renderChooser(ruleSpot);
+    }
+    ruleSpot.innerHTML = "";
+    ruleSpot.appendChild(stuff);
+  });
+  document.forms.form.add.addEventListener("click", () => {
+    let rule = null;
+    switch (document.forms.form.rule.value) {
+      case "character-set":
+        rule = CharacterSetRule.makeRule(document.forms.form);
+    }
+    console.log(rule);
+  });
+});

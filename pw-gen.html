@@ -6,6 +6,7 @@
   <title>Password Generator</title>
   <meta name="theme-color" content="#000000" />
   <meta name="color-scheme" content="dark light" />
+  <script src="rules.js"></script>
   <script src="script.js"></script>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -20,7 +21,28 @@
       <label> min: <input type="number" value="8" name="length-min" min="0" /> </label>
       <label> max: <input type="number" value="64" name="length-max" /> </label>
     </fieldset>
+    <fieldset>
+      <legend>Rules</legend>
+      <fielset name="rules">
+        <label><input type="checkbox" name="invert" value="1">does not</label>
+        <select name="rule">
+          <option></option>
+          <option value="character-set">Contains Characters</option>
+        </select>
+        <span id="ruleSpot" class="ruleSpot"></span>
+        <button name="add" type="button">Add</button>
+      </fielset>
+    </fieldset>
   </form>
+
+  <template id="character-set-rule">
+    <label>
+      Characters: <select name="character-set" required>
+        <option></option>
+      </select>
+    </label>
+    <label>Custom characters:<input type="text" name="custom-value" class="hidden"></label>
+  </template>
 </body>
 
 </html>
